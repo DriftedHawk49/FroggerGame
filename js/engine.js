@@ -58,7 +58,7 @@ var Engine = function(global) {
             pl.reset();
         },15,player); // Wait for 1-2 frames , And then Reset.
         level++; // Update the Wins
-        if(best<level)best++; // Update Best if Its Wins are equal to Best
+        if(best<score)best=score; // Update Best if Its Wins are equal to Best
         $("#win")[0].innerText = `Level : ${level}`;
         $("#best")[0].innerText = `Best : ${best}`;
         for(let addon of addon_array){
