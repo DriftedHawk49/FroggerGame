@@ -21,9 +21,10 @@ var Engine = function(global) {
         main();
     }
 
-    function update(dt) {
+    function update() {
         $("#score")[0].innerText = `Score : ${score}`;
-        updateEntities(dt);
+        $("#best")[0].innerText = `Best : ${best}`;
+        updateEntities();
         if(checkCollisions()){
             player.reset();
             $("#game-stat").addClass("oops");
@@ -58,7 +59,6 @@ var Engine = function(global) {
             pl.reset();
         },15,player); // Wait for 1-2 frames , And then Reset.
         level++; // Update the Wins
-        if(best<score)best=score; // Update Best if Its Wins are equal to Best
         $("#win")[0].innerText = `Level : ${level}`;
         $("#best")[0].innerText = `Best : ${best}`;
         for(let addon of addon_array){
@@ -77,8 +77,6 @@ var Engine = function(global) {
     function collected(){
         for(let addon of addon_array){
             if(addon.name!="rock"){
-                //Insert Sound of collection
-
             if(addon.row===player.row&&addon.col===player.col){
                 $("#collect")[0].play();
                 addon.x=undefined;
@@ -86,6 +84,7 @@ var Engine = function(global) {
                 addon.row = undefined;
                 addon.col = undefined;
                 score = score+addon.points;
+                if(best<score)best=score;
                 if(addon.name=="health"&&lifenumber<3){
                     if(lifenumber===-1)lifenumber=1;
                     else ++lifenumber;
