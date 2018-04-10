@@ -10,6 +10,12 @@ let sound = true;
 let game_start=false;
 
 $("#music")[0].volume=0.2;
+$("#move-selector")[0].load();
+$("#move-ingame")[0].load();
+$("#collide")[0].load();
+$("#complete")[0].load();
+$("#collect")[0].load();
+$("#enter")[0].load();
 
 $("#help_reveal").on("click",function(){
     $("#written-material").toggleClass("hide");
