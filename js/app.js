@@ -345,7 +345,6 @@ document.addEventListener("keyup",function(e){
         39:"right",
         13:"enter"
     };
-    console.log(e.keyCode);
     if(game_start===false){
         selector.handleInput(allowedKeys[e.keyCode]);
         if(e.keyCode===13){
