@@ -1,4 +1,6 @@
 
+//Main File For Object Declarations and Definitions.
+
 let level = 1, best=0,score=0;
 let norepeat =[];
 let life1 = "<img src=\"images/Heart.png\" width=\"20px\" height=\"30px\" alt=\"Life\">";
@@ -9,13 +11,16 @@ let selected = false;
 let sound = true;
 let game_start=false;
 
-$("#music")[0].volume=0.2;
+
+$("#music")[0].load();
 $("#move-selector")[0].load();
 $("#move-ingame")[0].load();
 $("#collide")[0].load();
 $("#complete")[0].load();
 $("#collect")[0].load();
 $("#enter")[0].load();
+
+$("#music")[0].volume=0.2;
 
 $("#help_reveal").on("click",function(){
     $("#written-material").toggleClass("hide");
@@ -27,12 +32,12 @@ $("#help_reveal").on("click",function(){
 });
 
 $("#mus").on("click",function(){
-    if($("#music")[0].paused===false){
-        $("#music")[0].pause();
+    if($("#music")[0].muted===false){
+        $("#music")[0].muted=true;
         $(".controls")[0].src="images/no-music.png";
     }
     else {
-        $("#music")[0].play();
+        $("#music")[0].muted = false;
         $(".controls")[0].src="images/music.png";
     }
 });
